@@ -53,10 +53,15 @@ Toda a navegação é realizada através na NavBar; onde são possíveis encontr
 ## Informação adicional
 
 - Esta aplicação foi criada usando:
+
   -- Microsoft ASP.Net 3.1;
+
   -- Microsoft ASP.NET Core Entity Framework 3.1.17;
+
   -- Pomelo Entity Framework MySql 3.1.17;
+
   -- Microsoft ASP.NET Core Identity 3.1.17;
+
   -- JQuery mask 1.14.15;
 
 ## Entidades

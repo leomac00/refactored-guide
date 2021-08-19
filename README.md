@@ -4,7 +4,7 @@ This project is an application for simulating a vaccine management system.
 This app allows the user to check information regarding places for taking vaccines (**Locais**), vaccine´s batches(**Lotes**) and vaccines(**Vacinas**) in order to disseminate and make information available for the population.
 For users with admin account it is possible to **C**reate, **R**ead, **U**pdate and **D**elete information regarding vaccines and people taking it.
 
-## Hot-To-Run
+## How-To-Run
 
 - First a DataBase must be created in order to execute the operations described above, the information for creating the DB is as bellow:
   > DB: MySql;

@@ -1,0 +1,60 @@
+@model DesafioMVC.DTO.LoteVacinaDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Editar lote";
+}
+
+<h2>Editar lote de vacinas</h2>
+<form id="form" class="form-horizontal" asp-controller="LotesVacinas" asp-action="Editar" method="POST">
+  <input type="hidden" asp-for="Id">
+
+  <label asp-for="VacinaId">Vacina: </label>
+  <select class="form-control" asp-for="VacinaId"
+    asp-items='@(new SelectList(@ViewBag.Vacinas, "Id", "Nome"))'></select>
+  <span class="text-danger" asp-validation-for="VacinaId"></span><br>
+
+
+  <label asp-for="Lote">
+    Lote:
+  </label>
+  <input id="Lote" class="form-control" asp-for="Lote" name="Lote" autocomplete="off" type="text"
+    placeholder="Identifcação do Lote">
+  <span class="text-danger" asp-validation-for="Lote"></span><br>
+
+  <label asp-for="QtdRecebida">
+    Quantidade recebida:
+  </label>
+  <input id="QtdRecebida" class="form-control" asp-for="QtdRecebida" name="QtdRecebida" autocomplete="off"
+    type="number">
+  <span class="text-danger" asp-validation-for="QtdRecebida"></span><br>
+
+  <label asp-for="QtdRestante">
+    Quantidade restante:
+  </label>
+  <input id="QtdRestante" class="form-control" asp-for="QtdRestante" name="QtdRestante" autocomplete="off"
+    type="number">
+  <span class="text-danger" asp-validation-for="QtdRestante"></span><br>
+
+  <label asp-for="DataRecebimento">
+    Data de recebimento:
+  </label>
+  <input id="DataRecebimento" class="form-control" asp-for="DataRecebimento" name="DataRecebimento" autocomplete="off"
+    type="date">
+  <span id="dr" class="text-danger" asp-validation-for="DataRecebimento"></span><br>
+
+  <label asp-for="DataValidade">
+    Data de validade:
+  </label>
+  <input id="DataValidade" class="form-control" asp-for="DataValidade" name="DataValidade" autocomplete="off"
+    type="date">
+  <span id="dv" class="text-danger" asp-validation-for="DataValidade"></span><br>
+  <br>
+  <br>
+  <span class="text-danger">QUALQUER MUDANÇA AFETARA TODA A BASE DE DADOS, TENHA CERTEZA DO QUE ESTÁ FAZENDO!</span><br>
+  <span class="text-danger">Aqui é possível fazer a alteração de qualquer valor, por isso tenha certeza do que está
+    fazendo.</span><br>
+
+
+
+  <br><button id="submitBtn" type="submit" class="btn btn-success">Editar lote</button>
+</form>

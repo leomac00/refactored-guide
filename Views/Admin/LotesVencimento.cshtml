@@ -1,0 +1,69 @@
+@model IEnumerable<DesafioMVC.Models.LoteVacina>
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Lotes proximos de vencimento";
+  var hoje = DateTime.Now;
+}
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tabela').DataTable({
+        "searching": false,
+        "language": {
+          "lengthMenu": "Mostrando _MENU_ registros por página",
+          "zeroRecords": "Nenhuma informação encontrada",
+          "info": "Páginas: _PAGE_ / _PAGES_",
+          "infoEmpty": "Páginas: 0 / _PAGES_",
+          "search": "Buscar: ",
+          "paginate": {
+            "first": " Primeiro ",
+            "last": " Último ",
+            "next": " Próximo ",
+            "previous": " Anterior "
+          }
+        }
+      });
+
+    });
+  </script>
+</head>
+<h2>Lotes proximos de vencimento</h2>
+<h4>Data do vencimento até: @ViewBag.hojeMaisTrinta</h4>
+<hr />
+
+
+
+<table id="tabela" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome da vacina</th>
+      <th>Identificação do lote</th>
+      <th>Quantidade recebida<br>[Un.]</th>
+      <th>Quantidade restante<br>[Un.]</th>
+      <th>Data de recebimento</th>
+      <th>Data de validade</th>
+      <th>Dias até o vencimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var lote in Model)
+    {
+      <tr>
+        <td>@lote.Id</td>
+        <td>@lote.Vacina.Nome</td>
+        <td>@lote.Lote</td>
+        <td>@lote.QtdRecebida</td>
+        <td>@lote.QtdRestante</td>
+        <td>@lote.DataRecebimento.ToString("dd/MM/yyyy")</td>
+        <td>@lote.DataValidade.ToString("dd/MM/yyyy")</td>
+        <td>@Convert.ToInt32((lote.DataValidade.AddDays(1) - hoje).TotalDays)</td>
+
+      </tr>
+    }
+  </tbody>
+</table>

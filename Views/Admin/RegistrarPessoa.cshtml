@@ -1,0 +1,42 @@
+@model DesafioMVC.DTO.PessoaDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Registrar pessoa";
+}
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script src="~/js/mascaras.js"></script>
+</head>
+
+<h2>Nova pessoa</h2>
+<form class="form-horizontal" asp-controller="Pessoas" asp-action="Registrar" method="POST">
+  <input type="hidden" asp-for="Id" value="0">
+
+  <label asp-for="Nome">
+    Nome:
+  </label>
+  <input id="Nome" class="form-control" asp-for="Nome" name="Nome" autocomplete="off" type="text" placeholder="Nome">
+  <span class="text-danger" asp-validation-for="Nome"></span><br>
+
+  <label asp-for="Cpf">
+    CPF:
+  </label>
+  <input id="Cpf" size="22" maxlength="11" class="Cpf form-control" asp-for="Cpf" name="Cpf" autocomplete="off"
+    type="text" placeholder="Cpf">
+  <span class="text-danger" asp-validation-for="Cpf"></span><br>
+
+  <label asp-for="EnderecoId">Endereço: </label>
+  <select class="form-control" asp-for="EnderecoId"
+    asp-items='@(new SelectList(@ViewBag.Enderecos, "Id", "Logradouro"))'></select>
+  <span class="text-danger" asp-validation-for="EnderecoId"></span><br>
+
+  <label asp-for="Nascimento">
+    Data de Nascimento:
+  </label>
+  <input id="Nascimento" class="form-control" asp-for="Nascimento" name="Nascimento" autocomplete="off" type="date">
+  <span id="dr" class="text-danger" asp-validation-for="Nascimento"></span><br>
+
+
+  <br><button type="submit" class="btn btn-success">Registrar pessoa</button>
+</form>

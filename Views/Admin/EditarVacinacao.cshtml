@@ -1,0 +1,37 @@
+@model DesafioMVC.DTO.VacinacaoDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Editar vacinação";
+}
+
+<h2>Editar vacinação</h2>
+<form class="form-horizontal" asp-controller="Vacinacoes" asp-action="Editar" method="POST">
+  <input type="hidden" asp-for="Id">
+  <input type="hidden" asp-for="Dose">
+
+  <label asp-for="PessoaId">Pessoa: </label>
+  <select class="form-control" asp-for="PessoaId"
+    asp-items='@(new SelectList(@ViewBag.Pessoas, "Id", "Nome"))'></select>
+  <span class="text-danger" asp-validation-for="PessoaId"></span><br>
+
+  <label asp-for="LoteId">Lote da vacina: </label>
+  <select class="form-control" asp-for="LoteId" asp-items='@(new SelectList(@ViewBag.Lotes, "Id", "Lote"))'></select>
+  <span class="text-danger" asp-validation-for="LoteId"></span><br>
+
+  <label asp-for="Data">
+    Data da vacinação:
+  </label>
+  <input id="Data" class="form-control" asp-for="Data" name="Data" autocomplete="off" type="date">
+  <span id="dv" class="text-danger" asp-validation-for="Data"></span><br>
+
+  <label asp-for="LocalId">Local: </label>
+  <select class="form-control" asp-for="LocalId" asp-items='@(new SelectList(@ViewBag.Locais, "Id", "Nome"))'></select>
+  <span class="text-danger" asp-validation-for="LocalId"></span><br>
+  <br>
+  <br>
+  <span class="text-danger">QUALQUER MUDANÇA AFETARA TODA A BASE DE DADOS, TENHA CERTEZA DO QUE ESTÁ FAZENDO!</span><br>
+  <span class="text-danger">Aqui é possível fazer a alteração de qualquer valor, por isso tenha certeza do que está
+    fazendo.</span><br>
+
+  <br><button type="submit" class="btn btn-success">Editar vacinação</button>
+</form>

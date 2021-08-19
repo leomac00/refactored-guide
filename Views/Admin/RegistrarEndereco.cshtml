@@ -1,0 +1,63 @@
+@model DesafioMVC.DTO.EnderecoDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Registrar endereço";
+}
+
+<head>
+  <script src="~/js/consultaCep.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</head>
+
+<h2>Novo endereço</h2>
+<form class="form-horizontal" asp-controller="Enderecos" asp-action="Registrar" method="POST">
+  <input type="hidden" asp-for="Id" value="0">
+
+  <label asp-for="Cep">
+    Cep:
+  </label>
+  <input onkeypress="$(this).mask('00.000-000')" class="form-control col-md-4" asp-for="Cep" name="Cep" size="15"
+    maxlength="10" autocomplete="off" id="cep" type="text" placeholder="CEP"> <button style="display: inline"
+    class="btn btn-primary" type="button" onClick="consultaCep()"><i class="fas fa-search"></i></button>
+  <span class="text-danger" asp-validation-for="Cep"></span><br>
+
+  <label asp-for="Logradouro">
+    Logradouro:
+  </label>
+  <input id="Logradouro" class="form-control" asp-for="Logradouro" name="Logradouro" autocomplete="off" type="text"
+    placeholder="Logradouro">
+  <span class="text-danger" asp-validation-for="Logradouro"></span><br>
+
+  <label asp-for="Numero">
+    Numero:
+  </label>
+  <input id="Numero" class="form-control" asp-for="Numero" name="Numero" autocomplete="off" type="text"
+    placeholder="Numero">
+  <span class="text-danger" asp-validation-for="Numero"></span><br>
+
+  <label asp-for="Complemento">
+    Complemento:
+  </label>
+  <input id="Complemento" class="form-control" asp-for="Complemento" name="Complemento" autocomplete="off" type="text"
+    placeholder="Complemento">
+  <span class="text-danger" asp-validation-for="Complemento"></span><br>
+
+  <label asp-for="Cidade">
+    Cidade:
+  </label>
+  <input id="Cidade" class="form-control" asp-for="Cidade" name="Cidade" autocomplete="off" type="text"
+    placeholder="Cidade">
+  <span class="text-danger" asp-validation-for="Cidade"></span><br>
+
+  <label asp-for="Estado">Estado:</label>
+  <select id="Estado" class="form-control" asp-for="Estado">
+    @foreach (var uf in ViewBag.Estados)
+    {
+      <option value="@uf">@uf</option>
+    }
+
+  </select>
+  <span class="text-danger" asp-validation-for="Estado"></span><br>
+
+  <br><button type="submit" class="btn btn-success">Registrar endereço</button>
+</form>

@@ -1,0 +1,47 @@
+@model DesafioMVC.DTO.VacinaDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Editar vacina";
+}
+
+
+<h2>Editar vacina</h2>
+<form class="form-horizontal" asp-controller="Vacinas" asp-action="Editar" method="POST">
+  <input type="hidden" asp-for="Id">
+
+  <label asp-for="Nome">
+    Nome:
+  </label>
+  <input id="Nome" class="form-control" asp-for="Nome" autocomplete="off" type="text" placeholder="Nome">
+  <span class="text-danger" asp-validation-for="Nome"></span><br>
+
+  <label asp-for="Nome">
+    Laboratório:
+  </label>
+  <input id="Laboratorio" class="form-control" asp-for="Laboratorio" autocomplete="off" type="text"
+    placeholder="Laboratorio">
+  <span class="text-danger" asp-validation-for="@Model.Laboratorio"></span><br>
+
+  <label asp-for="Posologia">Doses:</label>
+  <select id="Posologia" class="form-control" asp-for="Posologia">
+    <option value="true">Dose dupla</option>
+    <option value="false">Dose única</option>
+  </select>
+  <span class="text-danger" asp-validation-for="Posologia"></span><br>
+
+
+  <label asp-for="Intervalo">
+    Intervalo em dias [No caso de dose única o intervalo será zero]: </label>
+  <input class="form-control" asp-for="Intervalo" autocomplete="off" type="number">
+  <span class="text-danger" asp-validation-for="Intervalo"></span><br>
+  <br>
+  <br>
+  <span class="text-danger">QUALQUER MUDANÇA AFETARA TODA A BASE DE DADOS, TENHA CERTEZA DO QUE ESTÁ FAZENDO!</span><br>
+  <span class="text-danger">Aqui é possível fazer a alteração de qualquer valor, por isso tenha certeza do que está fazendo.</span><br>
+
+
+
+
+
+  <br><button type="submit" class="btn btn-success">Editar vacina</button>
+</form>

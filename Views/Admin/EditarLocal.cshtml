@@ -1,0 +1,31 @@
+@model DesafioMVC.DTO.LocalVacinacaoDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Editar local de vacinação";
+}
+
+<h2>Novo local de vacinação</h2>
+<form class="form-horizontal" asp-controller="LocaisVacinacao" asp-action="Editar" method="POST">
+  <input type="hidden" asp-for="Id">
+
+  <label asp-for="Nome">
+    Nome:
+  </label>
+  <input id="Nome" class="form-control" asp-for="Nome" name="Nome" autocomplete="off" type="text" placeholder="Nome">
+  <span class="text-danger" asp-validation-for="Nome"></span><br>
+
+  <label asp-for="LocalId">Local: </label>
+  <select class="form-control" asp-for="LocalId"
+    asp-items='@(new SelectList(@ViewBag.Enderecos, "Id", "Logradouro"))'></select>
+  <span class="text-danger" asp-validation-for="LocalId"></span><br>
+  <br>
+  <br>
+  <span class="text-danger">QUALQUER MUDANÇA AFETARA TODA A BASE DE DADOS, TENHA CERTEZA DO QUE ESTÁ FAZENDO!</span><br>
+  <span class="text-danger">Aqui é possível fazer a alteração de qualquer valor, por isso tenha certeza do que está
+    fazendo.</span><br>
+
+
+
+
+  <br><button type="submit" class="btn btn-success">Registrar local</button>
+</form>

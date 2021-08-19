@@ -1,0 +1,47 @@
+@model DesafioMVC.DTO.LoteVacinaDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Registrar lote";
+}
+
+
+<h2>Novo lote de vacinas</h2>
+<form id="form" class="form-horizontal" asp-controller="LotesVacinas" asp-action="Registrar" method="POST">
+  <input type="hidden" asp-for="Id" value="0">
+
+  <label asp-for="VacinaId">Vacina: </label>
+  <select class="form-control" asp-for="VacinaId"
+    asp-items='@(new SelectList(@ViewBag.Vacinas, "Id", "Nome"))'></select>
+  <span class="text-danger" asp-validation-for="VacinaId"></span><br>
+
+
+  <label asp-for="Lote">
+    Lote:
+  </label>
+  <input id="Lote" class="form-control" asp-for="Lote" name="Lote" autocomplete="off" type="text"
+    placeholder="Identifcação do Lote">
+  <span class="text-danger" asp-validation-for="Lote"></span><br>
+
+  <label asp-for="QtdRecebida">
+    Quantidade recebida:
+  </label>
+  <input id="QtdRecebida" class="form-control" asp-for="QtdRecebida" name="QtdRecebida" autocomplete="off"
+    type="number">
+  <span class="text-danger" asp-validation-for="QtdRecebida"></span><br>
+
+  <label asp-for="DataRecebimento">
+    Data de recebimento:
+  </label>
+  <input id="DataRecebimento" class="form-control" asp-for="DataRecebimento" name="DataRecebimento" autocomplete="off"
+    type="date">
+  <span id="dr" class="text-danger" asp-validation-for="DataRecebimento"></span><br>
+
+  <label asp-for="DataValidade">
+    Data de validade:
+  </label>
+  <input id="DataValidade" class="form-control" asp-for="DataValidade" name="DataValidade" autocomplete="off"
+    type="date">
+  <span id="dv" class="text-danger" asp-validation-for="DataValidade"></span><br>
+
+  <br><button id="submitBtn" type="submit" class="btn btn-success">Registrar lote</button>
+</form>

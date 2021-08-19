@@ -1,0 +1,16 @@
+@model DesafioMVC.DTO.SelecaoVacinaDTO
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Selecionar vacina";
+}
+
+<h2>Selecionar lote para aplicar vacina</h2>
+<form class="form-horizontal" asp-controller="Admin" asp-action="VacinarPessoa" method="POST">
+
+  <label asp-for="LoteId">Lote: </label>
+  <select class="form-control" asp-for="LoteId" asp-items='@(new SelectList(@ViewBag.Lotes, "Id", "Lote"))'></select>
+  <span class="text-danger" asp-validation-for="LoteId"></span><br>
+
+
+  <br><button type="submit" class="btn btn-success">Selecionar</button>
+</form>

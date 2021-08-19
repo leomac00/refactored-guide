@@ -71,9 +71,9 @@ B[LocalVacinacao]---->F[Vacinacao]
 C[Pessoa]---->F[Vacinacao]
 ```
 
-| Entidade       | Atributos                                                                                                                                                                                                  |
+| Entity         | Attribute                                                                                                                                                                                                  |
 | -------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Endereço       | <ul><li>Id : int</li><li>Cpf : string</li><li>Logradouro : string</li><li>Numero : string</li><li>Complemento : string</li><li>Cidade : string</li><li>Estado : string</li><li>Status : bool</li></ul>     |
+| Endereco       | <ul><li>Id : int</li><li>Cpf : string</li><li>Logradouro : string</li><li>Numero : string</li><li>Complemento : string</li><li>Cidade : string</li><li>Estado : string</li><li>Status : bool</li></ul>     |
 | Pessoa         | <ul><li>Id : int</li><li>Cpf : string</li><li>Nome completo : string</li><li>Data de nascimento : DateTime</li><li>Endereco : Endereco</li><li>Status : bool</li></ul>                                     |
 | LocalVacinacao | <ul><li>Id : int</li><li>Nome : string</li><li>Endereco : Endereco</li><li>Status : bool</li></ul>                                                                                                         |
 | Vacina         | <ul><li>Id : int</li><li>Nome : string</li><li>Laboratorio : string</li><li>Posologia : bool</li><li>Intervalo : int</li><li>Status : bool</li></ul>                                                       |
